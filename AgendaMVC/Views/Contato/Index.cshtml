@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AgendaMVC.Models.Contato>
+@{ 
+    ViewData["Title"] = "Contatos";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>
+    <a asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contato in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => contato.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => contato.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@contato.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@contato.Id">Detalhar</a> |
+                    <a asp-action="Delete" asp-route-id="@contato.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

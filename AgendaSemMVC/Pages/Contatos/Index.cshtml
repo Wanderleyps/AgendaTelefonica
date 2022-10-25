@@ -1,0 +1,32 @@
+﻿@page
+@model AgendaSemMVC.Pages.Contato.IndexModel
+@{
+    ViewData["Title"] = "Contatos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <table class="table">
+        <thead><tr><th>ID</th><th>Nome</th><th>Número</th></tr></thead>
+        <tbody>
+            @if (Model.Contatos != null)
+            {
+                foreach (var contato in Model.Contatos)
+                {
+                    <tr>
+                        <td>@contato.Id </td>
+                        <td>@contato.Nome</td>
+                        <td>@contato.Numero</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@contato.Id">Editar</a> |
+                            <button type="submit" asp-page-handler="delete" asp-route-id="@contato.Id">Deletar</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a asp-page="Create">Novo</a>
+</form>
+
